@@ -14,7 +14,7 @@ class SampleActor extends Actor {
 object SampleApp extends App {
   val system = ActorSystem("SampleSystem")
   // Default Actor constructor
-  val helloActor = system.actorOf(Props[SampleActor], name = "testactor")
-  helloActor ! "test"
-  helloActor ! "alternate message"
+  val testActor = system.actorOf(Props[SampleActor], name = "testactor")
+  testActor ! "test"
+  testActor ! "alternate message"
 }
