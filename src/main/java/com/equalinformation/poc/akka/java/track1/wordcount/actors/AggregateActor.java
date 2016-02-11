@@ -19,7 +19,8 @@ public class AggregateActor extends UntypedActor {
             ReduceData reduceData = (ReduceData) message;
             aggregateInMemoryReduce(reduceData.getReduceDataList());
         } else if (message instanceof Result) {
-//            getSender().tell(finalReducedMap.toString()); //TODO akka code migration to version in sbt
+//            getSender().tell(finalReducedMap.toString()); // older version
+            getSender().tell(finalReducedMap.toString(), getSelf());
         } else
             unhandled(message);
     }

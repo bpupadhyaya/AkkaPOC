@@ -22,7 +22,8 @@ public class MapActor extends UntypedActor {
         if (message instanceof String) {
             String work = (String) message;
             // map the words in the sentence and send the result to MasterActor
-//            getSender().tell(evaluateExpression(work)); //TODO akka code migration to version in sbt
+//            getSender().tell(evaluateExpression(work)); // older version
+            getSender().tell(evaluateExpression(work), getSelf());
         } else
             unhandled(message);
     }
