@@ -18,7 +18,8 @@ public class ReduceActor extends UntypedActor {
         if (message instanceof MapData) {
             MapData mapData = (MapData) message;
             // reduce the incoming data and forward the result to Master actor
-//            getSender().tell(reduce(mapData.getDataList())); //TODO migrate code to akka version in sbt
+//            getSender().tell(reduce(mapData.getDataList())); // old version
+            getSender().tell(reduce(mapData.getDataList()), getSelf());
         } else
             unhandled(message);
     }
